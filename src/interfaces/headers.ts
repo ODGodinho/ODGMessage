@@ -1,3 +1,8 @@
+/**
+ * Default Headers Response and Request
+ *
+ * @interface HttpHeadersInterface
+ */
 export interface HttpHeadersInterface extends Record<string, string[] | string | undefined> {
     accept?: string;
     "accept-language"?: string;

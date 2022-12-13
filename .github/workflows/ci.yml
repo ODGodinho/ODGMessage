@@ -2,7 +2,7 @@ name: Ci Job
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master, coverage ]
   pull_request:
 
 env:
@@ -36,6 +36,14 @@ jobs:
         run: "yarn test:ci"
       - name: Build Code
         run: yarn build
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # Not required for public repos
+          flags: unittests # Optional
+          name: codecov-umbrella # Optional
+          fail_ci_if_error: true # Optional (default = false)
+          verbose: true # Optional (default = false)
       - name: Check valid to semantic-release
         if: ${{ github.event_name == 'push' && env.IS_PACKAGE == 'true' }}
         env:
