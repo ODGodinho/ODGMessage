@@ -14,12 +14,14 @@
 
 <p align="center">
 
+[![codecov](https://codecov.io/gh/ODGodinho/ODGMessage/branch/main/graph/badge.svg?token=JCLIEK2OFN)](https://codecov.io/gh/ODGodinho/ODGMessage)
 [![Stargazers](https://img.shields.io/github/stars/ODGodinho/ODGMessage?color=F430A4)](https://github.com/ODGodinho/ODGMessage/stargazers)
 [![Made by ODGodinho](https://img.shields.io/badge/made%20by-ODGodinho-%2304A361)](https://www.linkedin.com/in/victor-alves-odgodinho/)
 [![Forks](https://img.shields.io/github/forks/ODGodinho/ODGMessage?color=CD4D34)](https://github.com/ODGodinho/ODGMessage/network/members)
 ![Repository size](https://img.shields.io/github/repo-size/ODGodinho/ODGMessage)
 [![GitHub last commit](https://img.shields.io/github/last-commit/ODGodinho/ODGMessage)](https://github.com/ODGodinho/ODGMessage/commits/master)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](https://opensource.org/licenses/MIT)
+[![StyleCI](https://github.styleci.io/repos/577124284/shield?branch=main)](https://github.styleci.io/repos/577124284?branch=main)
 
 </p>
 
@@ -40,7 +42,7 @@
 
 - 👀 Inversion of control (IoC)
 - 🎇 Dependency Injection (DI)
-- 🚨 Over 300 rules for pattern, possible errors and errors in Linter
+- 🚨 Over 800 rules for pattern, possible errors and errors in Linter
 
 ## 📗 Libraries
 

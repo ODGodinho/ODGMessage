@@ -39,11 +39,11 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
-          token: ${{ secrets.CODECOV_TOKEN }} # Not required for public repos
-          flags: unittests # Optional
-          name: codecov-umbrella # Optional
-          fail_ci_if_error: true # Optional (default = false)
-          verbose: true # Optional (default = false)
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: true
+          verbose: true
       - name: Check valid to semantic-release
         if: ${{ github.event_name == 'push' && env.IS_PACKAGE == 'true' }}
         env:
