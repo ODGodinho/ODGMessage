@@ -6,19 +6,19 @@
         />
     </a>
     <br />
-    Stanley The Template For Typescript By Dragons Gamers
+    ODG Request Message Interface
     <br />
 </h1>
 
-<h4 align="center">Template Stanley for Typescript projects and packages 📦!</h4>
+<h4 align="center">Request Message Interface 🔗!</h4>
 
 <p align="center">
 
-[![Stargazers](https://img.shields.io/github/stars/ODGodinho/Stanley-TheTemplate-Typescript?color=F430A4)](https://github.com/ODGodinho/Stanley-TheTemplate-Typescript/stargazers)
+[![Stargazers](https://img.shields.io/github/stars/ODGodinho/ODGMessage?color=F430A4)](https://github.com/ODGodinho/ODGMessage/stargazers)
 [![Made by ODGodinho](https://img.shields.io/badge/made%20by-ODGodinho-%2304A361)](https://www.linkedin.com/in/victor-alves-odgodinho/)
-[![Forks](https://img.shields.io/github/forks/ODGodinho/Stanley-TheTemplate-Typescript?color=CD4D34)](https://github.com/ODGodinho/Stanley-TheTemplate-Typescript/network/members)
-![Repository size](https://img.shields.io/github/repo-size/ODGodinho/Stanley-TheTemplate-Typescript)
-[![GitHub last commit](https://img.shields.io/github/last-commit/ODGodinho/Stanley-TheTemplate-Typescript)](https://github.com/ODGodinho/Stanley-TheTemplate-Typescript/commits/master)
+[![Forks](https://img.shields.io/github/forks/ODGodinho/ODGMessage?color=CD4D34)](https://github.com/ODGodinho/ODGMessage/network/members)
+![Repository size](https://img.shields.io/github/repo-size/ODGodinho/ODGMessage)
+[![GitHub last commit](https://img.shields.io/github/last-commit/ODGodinho/ODGMessage)](https://github.com/ODGodinho/ODGMessage/commits/master)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](https://opensource.org/licenses/MIT)
 
 </p>
@@ -29,27 +29,18 @@
 - [📗 Libraries](#-libraries)
 - [📁 Dependencies](#-dependencies)
 - [⏩ Get Started](#-get-started)
-  - [🔘 Use Template](#-use-template)
-  - [🔑 Configure Github Token](#-configure-github-token)
-    - [🙈 Create Github Token](#-create-github-token)
-    - [📦 Create NPM Token](#-create-npm-token)
-    - [🔐 Create project Environment](#-create-project-environment)
-  - [💻 Prepare to develop](#-prepare-to-develop)
-  - [📍 Start Project](#-start-project)
-  - [📨 Build and Run](#-build-and-run)
+  - [🔘 Add dependencies](#-add-dependencies)
+  - [💻 Usage](#-usage)
+  - [📰 Example Implements](#-example-implements)
   - [🧪 Teste Code](#-teste-code)
 
 ---
 
 ## 🎇 Benefits
 
-- 🚀 Speed start new project or package using typescript
+- 👀 Inversion of control (IoC)
+- 🎇 Dependency Injection (DI)
 - 🚨 Over 300 rules for pattern, possible errors and errors in Linter
-- 🎇 Code quality guaranteed
-- 📢 AutoReview when opening a pull-request/merge
-    ![AutoReview Comment example](https://user-images.githubusercontent.com/3797062/97085944-87233a80-165b-11eb-94a8-0a47d5e24905.png)
-- 🧪 Automatic Test when opening pull-request/merge
-- 📦 Automatic Package and release generate on merge
 
 ## 📗 Libraries
 
@@ -65,69 +56,87 @@
 - [Node.js](https://nodejs.org) 16 or later
 - [Yarn](https://yarnpkg.com/) Optional/Recommended
 - [ODG TsConfig](https://github.com/ODGodinho/tsconfig) Last Version
+- [ODG Exception](https://github.com/ODGodinho/ODGException) Last Version
 
 ## ⏩ Get Started
 
 ---
 
-### 🔘 Use Template
+### 🔘 Add dependencies
 
-Click in use this template button and clone your template project
-
-![Use Template](https://raw.githubusercontent.com/ODGodinho/Stanley-TheTemplate/main/public/images/UseTemplate.png)
-
-### 🔑 Configure Github Token
-
-#### 🙈 Create Github Token
-
-Before create new GITHUB_TOKEN in
-
-- <https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token>
-
-#### 📦 Create NPM Token
-
-if you want to generate packages create a secret called IS_PACKAGE = true AND create new NPM_TOKEN in
-
-- <https://docs.npmjs.com/creating-and-viewing-access-tokens>
-
-#### 🔐 Create project Environment
-
-- On GitHub.com, navigate to the main page of the repository.
-- Under your repository name, click `⚙️ Settings`.
-![Github Setting images example](https://docs.github.com/assets/cb-27528/images/help/repository/repo-actions-settings.png)
-- In the "Security" section of the sidebar, select `✳️ Secrets`, then click Actions.
-- Click New repository secret.
-- Type a name with: **GH_TOKEN**
-- Enter with your access secret token `ghp_Dsfde....`
-- Click Add secret.
-- If you are going to publish package:
-  - create **IS_PACKAGE** = `true`
-  - create **NPM_TOKEN** = `npm_szxw......`
-
-### 💻 Prepare To Develop
-
-Copy `.env.example` to `.env` and add the values according to your needs.
-
-### 📍 Start Project
-
-First install dependencies with the following command
-
-```bash
-yarn install
-# or
-npm install
+```powershell
+yarn add @odg/message
 ```
 
-## 📨 Build and Run
+### 💻 Usage
 
-To build the project, you can use the following command
+> for use axios implementation [click here](https://github.com/ODGodinho/ODGAxios)
 
-> if you change files, you need to run `yarn build` and `yarn start` again
+```typescript
+class Test {
 
-```bash
-yarn build && yarn start
-# or
-yarn dev
+    public constructor(private readonly requester: MessageInterface) {
+    }
+
+    public async example(): ResponseInterface<any, any> {
+        return this.requester.request({
+            url: "https://google.com",
+        });
+    }
+
+}
+```
+
+#### 📰 Example Implements
+
+```typescript
+import axios, {
+    type AxiosInstance,
+    type AxiosResponse,
+    type AxiosResponseHeaders,
+} from "axios";
+
+import {
+    type HttpHeadersInterface,
+    type InterceptorManager,
+    type RequestInterface ,
+    type MessageInterface,
+    type ResponseInterface,
+    MessageException,
+} from "@odg/message";
+
+export class AxiosMessage<RequestData, ResponseData> implements MessageInterface<RequestData, ResponseData> {
+
+    public interceptors: {
+        request: InterceptorManager<RequestInterface<RequestData>>;
+        response: InterceptorManager<ResponseInterface<RequestData, ResponseData>>;
+    };
+
+    private readonly client: AxiosInstance;
+
+    public constructor() {
+        this.client = axios.create();
+        // this.interceptors = implements;
+    }
+
+    public async request<
+        RequestD = RequestData,
+        ResponseD = ResponseData,
+    >(config: RequestInterface<RequestD>): Promise<ResponseInterface<RequestD, ResponseD>> {
+        try {
+            const response = await this.client.request<ResponseD, AxiosResponse<ResponseD, RequestD>, RequestD>(config);
+
+            return {
+                data: response.data,
+                status: response.status,
+                headers: response.headers,
+                request: response.config,
+            };
+        } catch (error: unknown) {
+            throw new MessageException("Example");
+        }
+    }
+}
 ```
 
 ## 🧪 Teste Code
