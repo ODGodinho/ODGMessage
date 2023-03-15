@@ -4,10 +4,10 @@
     "description": "Interface request fo inversion of control",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
-    "homepage": "",
+    "homepage": "https://github.com/ODGodinho/ODGMessage",
     "repository": {
         "type": "git",
-        "url": ""
+        "url": "https://github.com/ODGodinho/ODGMessage"
     },
     "scripts": {
         "build": "rimraf build && tsc --project ./tsconfig.build.json",
@@ -19,6 +19,9 @@
         "test": "jest",
         "test:ci": "jest --ci --passWithNoTests",
         "test:watch": "jest --watchAll"
+    },
+    "bugs": {
+        "url": "https://github.com/ODGodinho/ODGMessage/issues"
     },
     "publishConfig": {
         "access": "public"
