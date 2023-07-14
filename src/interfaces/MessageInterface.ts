@@ -1,9 +1,9 @@
 import { type RequestInterface } from "./request";
 import { type ResponseInterface } from "./response";
 
-export type onFulfilledTypo<Data> = (value: Data) => Data | Promise<Data>;
+export type onFulfilledType<Data> = (value: Data) => Data | Promise<Data>;
 
-export type onRejectedTypo = (error: Error) => void;
+export type onRejectedType = (error: Error) => void;
 
 export interface MessageInterceptorOptions {
     synchronous?: boolean;
@@ -11,8 +11,8 @@ export interface MessageInterceptorOptions {
 
 export interface InterceptorManager<RequestOrResponseInterface> {
     use(
-        onFulfilled?: onFulfilledTypo<RequestOrResponseInterface>,
-        onRejected?: onRejectedTypo,
+        onFulfilled?: onFulfilledType<RequestOrResponseInterface>,
+        onRejected?: onRejectedType,
         options?: MessageInterceptorOptions
     ): number;
     eject(id: number): void;

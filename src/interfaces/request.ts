@@ -1,6 +1,6 @@
 import { type HttpHeadersInterface } from "./headers";
 import { type Methods, type ProxyConfigInterface } from "./options";
-import type { ResponseType } from "./response";
+import { type ResponseType } from "./response";
 
 export interface ParametersInterface extends Record<string, unknown> {
 
