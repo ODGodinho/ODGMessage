@@ -3,7 +3,7 @@ import { type ResponseInterface } from "./response";
 
 export type onFulfilledType<Data> = (value: Data) => Data | Promise<Data>;
 
-export type onRejectedType = (error: Error) => void;
+export type onRejectedType = (error: Error) => never;
 
 export interface MessageInterceptorOptions {
     synchronous?: boolean;
