@@ -1,9 +1,11 @@
+import { type Exception } from "@odg/exception";
+
 import { type RequestInterface } from "./request";
 import { type ResponseInterface } from "./response";
 
 export type onFulfilledType<Data> = (value: Data) => Data | Promise<Data>;
 
-export type onRejectedType = (error: Error) => Promise<never> | never;
+export type onRejectedType = (error: Exception) => Promise<never> | never;
 
 export interface MessageInterceptorOptions {
     synchronous?: boolean;

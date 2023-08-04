@@ -1,9 +1,9 @@
-import { Exception } from "@odg/exception";
+import { UnknownException } from "@odg/exception";
 
 import { type RequestInterface } from "../interfaces/request";
 import { type ResponseInterface } from "../interfaces/response";
 
-export class MessageException<RequestData, ResponseData = unknown> extends Exception {
+export class MessageUnknownException<RequestData, ResponseData = unknown> extends UnknownException {
 
     public constructor(
         public message: string,

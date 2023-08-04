@@ -1,9 +1,12 @@
-import { MessageException } from "../../src/index";
+import { MessageException, MessageUnknownException } from "../../src/index";
 
-describe("MessageError", () => {
+describe.each([
+    MessageUnknownException,
+    MessageException,
+])("MessageError", (MyException) => {
     test("InstanceMessage Error", () => {
-        const exception = new MessageException("anything");
-        expect(exception).toBeInstanceOf(MessageException);
+        const exception = new MyException("anything");
+        expect(exception).toBeInstanceOf(MyException);
         expect(exception.message).toStrictEqual("anything");
         expect(exception.request).toBeUndefined();
         expect(exception.response).toBeUndefined();
@@ -15,17 +18,17 @@ describe("MessageError", () => {
         const responseData = {
             status: 200,
             data: "response data",
-            headers: { },
+            headers: {},
             request: requestData,
         };
-        const exception = new MessageException(
+        const exception = new MyException(
             "anything1",
             undefined,
             undefined,
             requestData,
             responseData,
         );
-        expect(exception).toBeInstanceOf(MessageException);
+        expect(exception).toBeInstanceOf(MyException);
         expect(exception.message).toStrictEqual("anything1");
         expect(exception.request?.url).toStrictEqual("http://localhost");
         expect(exception.response?.status).toStrictEqual(200);
