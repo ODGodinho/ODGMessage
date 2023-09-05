@@ -19,7 +19,7 @@ export enum Methods {
  */
 export interface ProxyConfigInterface {
     host: string;
-    port: number;
+    port?: number;
     auth?: {
         username: string;
         password: string;
