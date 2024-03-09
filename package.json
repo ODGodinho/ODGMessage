@@ -56,7 +56,7 @@
     "devDependencies": {
         "@odg/eslint-config": "*",
         "@odg/tsconfig": "*",
-        "@types/node": ">=18",
+        "@types/node": ">=20",
         "@vitest/coverage-v8": "*",
         "eslint": "*",
         "rimraf": "*",
