@@ -11,7 +11,7 @@ export interface RequestInterface<RequestData> {
     baseURL?: string;
     method?: Methods | string;
     headers?: HttpHeadersInterface;
-    params?: Extract<RequestData, ParametersInterface> & ParametersInterface;
+    params?: ParametersInterface;
     data?: RequestData;
     timeout?: number;
     responseType?: ResponseType;
