@@ -34,4 +34,7 @@ export interface MessageInterface<RequestData = unknown, ResponseData = unknown>
         config: RequestInterface<RequestD>
     ): Promise<ResponseInterface<RequestD, ResponseD>>;
 
+    getDefaultOptions(): RequestInterface<RequestData>;
+
+    setDefaultOptions(config: RequestInterface<RequestData>): this;
 }

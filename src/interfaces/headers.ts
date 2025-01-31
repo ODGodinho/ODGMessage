@@ -4,7 +4,7 @@
  * @interface HttpHeadersInterface
  */
 export interface HttpHeadersInterface extends Record<string, string[] | string | undefined> {
-    accept?: string;
+    "accept"?: string;
     "accept-language"?: string;
     "accept-patch"?: string;
     "accept-ranges"?: string;
@@ -16,12 +16,12 @@ export interface HttpHeadersInterface extends Record<string, string[] | string |
     "access-control-max-age"?: string;
     "access-control-request-headers"?: string;
     "access-control-request-method"?: string;
-    age?: string;
-    allow?: string;
+    "age"?: string;
+    "allow"?: string;
     "alt-svc"?: string;
-    authorization?: string;
+    "authorization"?: string;
     "cache-control"?: string;
-    connection?: string;
+    "connection"?: string;
     "content-disposition"?: string;
     "content-encoding"?: string;
     "content-language"?: string;
@@ -29,27 +29,27 @@ export interface HttpHeadersInterface extends Record<string, string[] | string |
     "content-location"?: string;
     "content-range"?: string;
     "content-type"?: string;
-    cookie?: string;
-    date?: string;
-    etag?: string;
-    expect?: string;
-    expires?: string;
-    forwarded?: string;
-    from?: string;
-    host?: string;
+    "cookie"?: string;
+    "date"?: string;
+    "etag"?: string;
+    "expect"?: string;
+    "expires"?: string;
+    "forwarded"?: string;
+    "from"?: string;
+    "host"?: string;
     "if-match"?: string;
     "if-modified-since"?: string;
     "if-none-match"?: string;
     "if-unmodified-since"?: string;
     "last-modified"?: string;
-    location?: string;
-    origin?: string;
-    pragma?: string;
+    "location"?: string;
+    "origin"?: string;
+    "pragma"?: string;
     "proxy-authenticate"?: string;
     "proxy-authorization"?: string;
     "public-key-pins"?: string;
-    range?: string;
-    referer?: string;
+    "range"?: string;
+    "referer"?: string;
     "retry-after"?: string;
     "sec-websocket-accept"?: string;
     "sec-websocket-extensions"?: string;
@@ -58,13 +58,13 @@ export interface HttpHeadersInterface extends Record<string, string[] | string |
     "sec-websocket-version"?: string;
     "set-cookie"?: string[];
     "strict-transport-security"?: string;
-    tk?: string;
-    trailer?: string;
+    "tk"?: string;
+    "trailer"?: string;
     "transfer-encoding"?: string;
-    upgrade?: string;
+    "upgrade"?: string;
     "user-agent"?: string;
-    vary?: string;
-    via?: string;
-    warning?: string;
+    "vary"?: string;
+    "via"?: string;
+    "warning"?: string;
     "www-authenticate"?: string;
 }
