@@ -1,5 +1,3 @@
-import { type MessageInterface } from "../interfaces/MessageInterface";
-
 import { MessageException } from "./MessageException";
 import { MessageUnknownException } from "./MessageUnknownException";
 
