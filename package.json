@@ -57,9 +57,9 @@
         "@odg/eslint-config": "*",
         "@odg/tsconfig": "*",
         "@types/node": ">=20",
-        "@vitest/coverage-v8": "^1",
+        "@vitest/coverage-istanbul": "^1",
         "rimraf": "*",
-        "typescript": "^5.7.3",
+        "typescript": "^5.8.2",
         "vite-tsconfig-paths": "^4",
         "vitest": "^1"
     },

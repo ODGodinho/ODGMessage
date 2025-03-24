@@ -11,3 +11,5 @@ export type * from "./interfaces/response";
 export * from "./messages/MessageException";
 
 export * from "./messages/MessageUnknownException";
+
+export * from "./messages/ODGMessage";

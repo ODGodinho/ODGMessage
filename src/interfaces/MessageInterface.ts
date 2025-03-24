@@ -11,6 +11,11 @@ export interface MessageInterceptorOptions {
     synchronous?: boolean;
 }
 
+export interface InterceptorsInterface<RequestData = unknown, ResponseData = unknown> {
+    request: InterceptorManager<RequestInterface<RequestData>>;
+    response: InterceptorManager<ResponseInterface<RequestData, ResponseData>>;
+}
+
 export interface InterceptorManager<RequestOrResponseInterface> {
     use(
         onFulfilled?: onFulfilledType<RequestOrResponseInterface>,
@@ -25,10 +30,7 @@ export type DefaultMessageConstructor<RequestData> = Omit<RequestInterface<Reque
 
 export interface MessageInterface<RequestData = unknown, ResponseData = unknown> {
 
-    interceptors: {
-        request: InterceptorManager<RequestInterface<RequestData>>;
-        response: InterceptorManager<ResponseInterface<RequestData, ResponseData>>;
-    };
+    interceptors: InterceptorsInterface<RequestData, ResponseData>;
 
     request<RequestD = RequestData, ResponseD = ResponseData>(
         config: RequestInterface<RequestD>

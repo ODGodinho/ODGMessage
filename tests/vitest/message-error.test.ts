@@ -1,4 +1,4 @@
-import { MessageException, MessageUnknownException } from "../../src/index";
+import { ODGMessage, MessageException, MessageUnknownException } from "../../src/index";
 
 describe.each([
     MessageUnknownException,
@@ -33,5 +33,19 @@ describe.each([
         expect(exception.request?.url).toStrictEqual("http://localhost");
         expect(exception.response?.status).toStrictEqual(200);
         expect(exception.response?.data).toStrictEqual("response data");
+    });
+
+    test("Is Message Error test", () => {
+        expect(ODGMessage.isMessageError(null)).toBeFalsy();
+        expect(ODGMessage.isMessageError(new MessageException("anything"))).toBeTruthy();
+        expect(ODGMessage.isMessageError(new MessageUnknownException("anything"))).toBeTruthy();
+
+        const error1 = new Error("example");
+        error1.name = "MessageException";
+        expect(ODGMessage.isMessageError(error1)).toBeTruthy();
+
+        const error2 = new Error("example");
+        error2.name = "MessageUnknownException";
+        expect(ODGMessage.isMessageError(error2)).toBeTruthy();
     });
 });

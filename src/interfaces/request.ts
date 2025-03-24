@@ -21,6 +21,5 @@ export interface RequestInterface<RequestData> {
     maxRedirects?: number;
     socketPath?: string | null;
     proxy?: ProxyConfigInterface | false;
-
-    // TODO: cancelToken?: any;
+    signal?: AbortSignal;
 }
