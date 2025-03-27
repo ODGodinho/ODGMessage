@@ -7,7 +7,7 @@ export interface ParametersInterface extends Record<string, unknown> {
 }
 
 export interface RequestInterface<RequestData, ExtraData extends Record<string, unknown> = Record<string, unknown>> {
-    readonly startTime: number;
+    readonly startTime?: number;
     readonly endTime?: number;
     readonly timestamps?: number;
     url?: string;
