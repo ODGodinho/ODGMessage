@@ -6,7 +6,10 @@ export interface ParametersInterface extends Record<string, unknown> {
 
 }
 
-export interface RequestInterface<RequestData> {
+export interface RequestInterface<RequestData, ExtraData extends Record<string, unknown> = Record<string, unknown>> {
+    readonly startTime: number;
+    readonly endTime?: number;
+    readonly timestamps?: number;
     url?: string;
     baseURL?: string;
     method?: Methods | string;
@@ -22,4 +25,13 @@ export interface RequestInterface<RequestData> {
     socketPath?: string | null;
     proxy?: ProxyConfigInterface | false;
     signal?: AbortSignal;
+    extras?: ExtraData;
 }
+
+export type RequestOptionsParametersInterface<
+    RequestData,
+    ExtraData extends Record<string, unknown> = Record<string, unknown>,
+> = Omit<
+    RequestInterface<RequestData, ExtraData>,
+    "endTime" | "startTime" | "timestamps"
+>;

@@ -36,7 +36,7 @@ export interface MessageInterface<RequestData = unknown, ResponseData = unknown>
         config: RequestInterface<RequestD>
     ): Promise<ResponseInterface<RequestD, ResponseD>>;
 
-    getDefaultOptions(): RequestInterface<RequestData>;
+    getDefaultOptions(): Partial<RequestInterface<RequestData>>;
 
-    setDefaultOptions(config: RequestInterface<RequestData>): this;
+    setDefaultOptions(config: Partial<RequestInterface<RequestData>>): this;
 }

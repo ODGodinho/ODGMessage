@@ -10,10 +10,13 @@
         "url": "https://github.com/ODGodinho/ODGMessage"
     },
     "scripts": {
-        "build": "rimraf dist && tsc --project ./tsconfig.build.json",
-        "build:watch": "rimraf dist && tsc --project ./tsconfig.build.json -w",
-        "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json,.jsonc,.json5,.yml,.yaml,.xml,.txt,.svg,.properties,.gradle,.java,.cpp,.c,.cs,.html,.css,.groovy,.gitignore,.npmignore,.toml,.env,.example,.sample,.ini,.php,.bat,.powershell,.ps1,.sh,.bash,.eslintrc .",
-        "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx,.json,.jsonc,.json5,.yml,.yaml,.xml,.txt,.svg,.properties,.gradle,.java,.cpp,.c,.cs,.html,.css,.groovy,.gitignore,.npmignore,.toml,.env,.example,.sample,.ini,.php,.bat,.powershell,.ps1,.sh,.bash,.eslintrc . --fix",
+        "build": "rimraf dist/ && tsc --project ./tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+        "build:watch": "npm run build && (concurrently \"tsc --project ./tsconfig.build.json -w\" \"tsc-alias -p tsconfig.build.json -w\")",
+        "dev": "tsx ./src/index.ts",
+        "start": "node ./dist/index.js",
+        "lint": "eslint --ext .js,.jsx,.ts,.tsx,.json,.jsonc,.json5,.yml,.yaml,.xml,.txt,.svg,.properties,.gradle,.java,.cpp,.c,.cs,.html,.css,.groovy,.gitignore,.npmignore,.toml,.env,.example,.sample,.ini,.php,.bat,.powershell,.ps1,.sh,.bash,.eslintrc",
+        "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx,.json,.jsonc,.json5,.yml,.yaml,.xml,.txt,.svg,.properties,.gradle,.java,.cpp,.c,.cs,.html,.css,.groovy,.gitignore,.npmignore,.toml,.env,.example,.sample,.ini,.php,.bat,.powershell,.ps1,.sh,.bash,.eslintrc --fix",
+        "prepare": "husky",
         "test": "vitest run",
         "test:ci": "vitest run --passWithNoTests",
         "test:watch": "vitest --watch"
@@ -23,6 +26,9 @@
     },
     "publishConfig": {
         "access": "public"
+    },
+    "lint-staged": {
+        "*": [ "npm run lint:fix" ]
     },
     "release": {
         "branches": [
@@ -58,12 +64,19 @@
         "@odg/tsconfig": "*",
         "@types/node": ">=20",
         "@vitest/coverage-istanbul": "^1",
+        "concurrently": "^9.1.2",
+        "husky": "^9.1.7",
         "rimraf": "*",
+        "tsc-alias": "^1.8.11",
+        "tsx": "^4.19.3",
         "typescript": "^5.8.2",
         "vite-tsconfig-paths": "^4",
         "vitest": "^1"
     },
     "dependencies": {
+        "@odg/exception": "*"
+    },
+    "peerDependencies": {
         "@odg/exception": "*"
     }
 }
