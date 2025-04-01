@@ -1,7 +1,8 @@
 import { type Exception } from "@odg/exception";
 
+import { type MessageResponse } from "../messages/MessageResponse";
+
 import { type RequestInterface } from "./request";
-import { type ResponseInterface } from "./response";
 
 export type onFulfilledType<Data> = (value: Data) => Data | Promise<Data>;
 
@@ -13,7 +14,7 @@ export interface MessageInterceptorOptions {
 
 export interface InterceptorsInterface<RequestData = unknown, ResponseData = unknown> {
     request: InterceptorManager<RequestInterface<RequestData>>;
-    response: InterceptorManager<ResponseInterface<RequestData, ResponseData>>;
+    response: InterceptorManager<MessageResponse<RequestData, ResponseData>>;
 }
 
 export interface InterceptorManager<RequestOrResponseInterface> {
@@ -34,7 +35,7 @@ export interface MessageInterface<RequestData = unknown, ResponseData = unknown>
 
     request<RequestD = RequestData, ResponseD = ResponseData>(
         config: RequestInterface<RequestD>
-    ): Promise<ResponseInterface<RequestD, ResponseD>>;
+    ): Promise<MessageResponse<RequestD, ResponseD>>;
 
     getDefaultOptions(): Partial<RequestInterface<RequestData>>;
 

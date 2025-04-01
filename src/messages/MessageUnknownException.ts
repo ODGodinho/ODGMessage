@@ -1,7 +1,6 @@
 import { UnknownException } from "@odg/exception";
 
-import { type RequestInterface } from "../interfaces/request";
-import { type ResponseInterface } from "../interfaces/response";
+import { type RequestInterface, type ResponseInterface } from "../interfaces";
 
 export class MessageUnknownException<RequestData, ResponseData = unknown> extends UnknownException {
 
@@ -10,7 +9,7 @@ export class MessageUnknownException<RequestData, ResponseData = unknown> extend
         preview?: unknown,
         public code?: string,
         public request?: RequestInterface<RequestData>,
-        public response?: ResponseInterface<RequestData, ResponseData>,
+        public response?: ResponseInterface<ResponseData>,
     ) {
         super(message, preview, code);
     }

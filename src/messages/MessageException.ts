@@ -1,7 +1,6 @@
 import { Exception } from "@odg/exception";
 
-import { type RequestInterface } from "../interfaces/request";
-import { type ResponseInterface } from "../interfaces/response";
+import { type ResponseInterface, type RequestInterface } from "../interfaces";
 
 export class MessageException<RequestData, ResponseData = unknown> extends Exception {
 
@@ -10,7 +9,7 @@ export class MessageException<RequestData, ResponseData = unknown> extends Excep
         preview?: unknown,
         public code?: string,
         public request?: RequestInterface<RequestData>,
-        public response?: ResponseInterface<RequestData, ResponseData>,
+        public response?: ResponseInterface<ResponseData>,
     ) {
         super(message, preview, code);
     }
