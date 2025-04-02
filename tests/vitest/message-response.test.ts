@@ -19,4 +19,22 @@ describe("Teste MessageResponse class", () => {
         }, { data: {}, headers: {}, status: 500 });
         expect(message.isOk()).toBeFalsy();
     });
+    test("Teste getStatus", () => {
+        const message = new MessageResponse({
+            method: Methods.GET,
+        }, { data: {}, headers: {}, status: 500 });
+        expect(message.getStatus()).toBe(500);
+    });
+    test("Teste getBody", () => {
+        const message = new MessageResponse({
+            method: Methods.GET,
+        }, {
+            data: {
+                "ok": true,
+            },
+            headers: {},
+            status: 500,
+        });
+        expect(message.getResponseBody()).toHaveProperty("ok", true);
+    });
 });

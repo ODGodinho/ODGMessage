@@ -8,8 +8,8 @@ export abstract class ODGMessage {
     ): message is MessageException<unknown> | MessageUnknownException<unknown> {
         if (!message) return false;
 
-        const isMessageUnknownException = message instanceof Error && message.name === "MessageUnknownException";
-        const isMessageException = message instanceof Error && message.name === "MessageException";
+        const isMessageUnknownException = message instanceof Error && message.name.endsWith("MessageUnknownException");
+        const isMessageException = message instanceof Error && message.name.endsWith("MessageException");
 
         return message instanceof MessageUnknownException
             || message instanceof MessageException
