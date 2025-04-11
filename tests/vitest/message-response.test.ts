@@ -43,4 +43,18 @@ describe("Teste MessageResponse class", () => {
         });
         expect(message.getResponseBody()).toHaveProperty("ok", true);
     });
+
+    test("isMessage Response instanceof", () => {
+        expect(
+            MessageResponse.isMessageResponse(new MessageResponse({}, { data: {}, headers: {}, status: 200 })),
+        ).toBeTruthy();
+        expect(
+            MessageResponse.isMessageResponse({
+                ...new MessageResponse({}, { data: {}, headers: {}, status: 200 }),
+            }),
+        ).toBeTruthy();
+        expect(
+            MessageResponse.isMessageResponse(null),
+        ).toBeFalsy();
+    });
 });
