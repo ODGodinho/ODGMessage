@@ -25,6 +25,12 @@ describe("Teste MessageResponse class", () => {
         }, { data: {}, headers: {}, status: 500 });
         expect(message.getStatus()).toBe(500);
     });
+    test("Teste getMessage", () => {
+        const message = new MessageResponse({
+            method: Methods.GET,
+        }, { data: {}, headers: {}, status: 500 });
+        expect(message.getMessage()).toBe(message);
+    });
     test("Teste getBody", () => {
         const message = new MessageResponse({
             method: Methods.GET,

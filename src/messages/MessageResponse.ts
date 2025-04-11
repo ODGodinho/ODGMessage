@@ -24,6 +24,10 @@ export class MessageResponse<RequestData = unknown, ResponseData = unknown> {
         this.headers = this.response.headers;
     }
 
+    public getMessage(): this {
+        return this;
+    }
+
     /**
      * Truthy if valid status in message.request.validadeStatus(message.getStatus())
      *
