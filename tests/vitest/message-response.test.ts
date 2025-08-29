@@ -1,10 +1,9 @@
-import { MessageResponse, Methods } from "../../src";
+import { MessageResponse, Methods, ODGMessage } from "../../src";
 
 describe("Teste MessageResponse class", () => {
     test("Teste Instance", () => {
         const message = new MessageResponse({}, { data: {}, headers: {}, status: 200 });
         expect(message).toHaveProperty("response.status", 200);
-        expect(message).toHaveProperty("status", 200);
     });
     test("Teste Status isOK", () => {
         const message = new MessageResponse({
@@ -46,15 +45,20 @@ describe("Teste MessageResponse class", () => {
 
     test("isMessage Response instanceof", () => {
         expect(
-            MessageResponse.isMessageResponse(new MessageResponse({}, { data: {}, headers: {}, status: 200 })),
+            ODGMessage.isMessageResponse(new MessageResponse({}, { data: {}, headers: {}, status: 200 })),
         ).toBeTruthy();
         expect(
-            MessageResponse.isMessageResponse({
+            ODGMessage.isMessageResponse({
                 ...new MessageResponse({}, { data: {}, headers: {}, status: 200 }),
             }),
         ).toBeTruthy();
         expect(
-            MessageResponse.isMessageResponse(null),
+            ODGMessage.isMessage({
+                ...new MessageResponse({}, { data: {}, headers: {}, status: 200 }),
+            }),
+        ).toBeTruthy();
+        expect(
+            ODGMessage.isMessageResponse(null),
         ).toBeFalsy();
     });
 });

@@ -1,4 +1,4 @@
-import { ODGMessage, MessageException, MessageUnknownException } from "../../src/index";
+import { MessageException, MessageUnknownException, ODGMessage } from "../../src/index";
 
 describe.each([
     MessageUnknownException,
@@ -41,6 +41,8 @@ describe.each([
         expect(ODGMessage.isMessageError(null)).toBeFalsy();
         expect(ODGMessage.isMessageError(new MessageException("anything"))).toBeTruthy();
         expect(ODGMessage.isMessageError(new MessageUnknownException("anything"))).toBeTruthy();
+        expect(ODGMessage.isMessage(new MessageException("anything"))).toBeTruthy();
+        expect(ODGMessage.isMessage(new MessageUnknownException("anything"))).toBeTruthy();
 
         const error1 = new Error("example");
         error1.name = "MessageException";
