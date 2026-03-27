@@ -3,12 +3,14 @@ import { MessageResponse, Methods, ODGMessage } from "../../src";
 describe("Teste MessageResponse class", () => {
     test("Teste Instance", () => {
         const message = new MessageResponse({}, { data: {}, headers: {}, status: 200 });
+
         expect(message).toHaveProperty("response.status", 200);
     });
     test("Teste Status isOK", () => {
         const message = new MessageResponse({
             validateStatus: (status): boolean => status === 200,
         }, { data: {}, headers: {}, status: 200 });
+
         expect(message.isOk()).toBeTruthy();
     });
     test("Teste invalid Status isOK", () => {
@@ -16,18 +18,21 @@ describe("Teste MessageResponse class", () => {
             validateStatus: (status): boolean => status === 200,
             method: Methods.GET,
         }, { data: {}, headers: {}, status: 500 });
+
         expect(message.isOk()).toBeFalsy();
     });
     test("Teste getStatus", () => {
         const message = new MessageResponse({
             method: Methods.GET,
         }, { data: {}, headers: {}, status: 500 });
+
         expect(message.getStatus()).toBe(500);
     });
     test("Teste getMessage", () => {
         const message = new MessageResponse({
             method: Methods.GET,
         }, { data: {}, headers: {}, status: 500 });
+
         expect(message.getMessage()).toBe(message);
     });
     test("Teste getBody", () => {
@@ -40,6 +45,7 @@ describe("Teste MessageResponse class", () => {
             headers: {},
             status: 500,
         });
+
         expect(message.getResponseBody()).toHaveProperty("ok", true);
     });
 
@@ -49,12 +55,12 @@ describe("Teste MessageResponse class", () => {
         ).toBeTruthy();
         expect(
             ODGMessage.isMessageResponse({
-                ...new MessageResponse({}, { data: {}, headers: {}, status: 200 }),
+                ...Object.fromEntries(Object.entries(new MessageResponse({}, { data: {}, headers: {}, status: 200 }))),
             }),
         ).toBeTruthy();
         expect(
             ODGMessage.isMessage({
-                ...new MessageResponse({}, { data: {}, headers: {}, status: 200 }),
+                ...Object.fromEntries(Object.entries(new MessageResponse({}, { data: {}, headers: {}, status: 200 }))),
             }),
         ).toBeTruthy();
         expect(

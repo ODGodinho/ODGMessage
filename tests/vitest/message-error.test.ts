@@ -6,6 +6,7 @@ describe.each([
 ])("MessageError", (MyException) => {
     test("InstanceMessage Error", () => {
         const exception = new MyException("anything");
+
         expect(exception).toBeInstanceOf(MyException);
         expect(exception.message).toStrictEqual("anything");
         expect(exception.request).toBeUndefined();
@@ -29,6 +30,7 @@ describe.each([
             requestData,
             responseData,
         );
+
         expect(exception).toBeInstanceOf(MyException);
         expect(exception.message).toStrictEqual("anything1");
         expect(exception.request?.url).toStrictEqual("http://localhost");
@@ -44,11 +46,15 @@ describe.each([
         expect(ODGMessage.isMessage(new MessageException("anything"))).toBeTruthy();
         expect(ODGMessage.isMessage(new MessageUnknownException("anything"))).toBeTruthy();
 
+        // eslint-disable-next-line no-restricted-syntax
         const error1 = new Error("example");
+
         error1.name = "MessageException";
         expect(ODGMessage.isMessageError(error1)).toBeTruthy();
 
+        // eslint-disable-next-line no-restricted-syntax
         const error2 = new Error("example");
+
         error2.name = "MessageUnknownException";
         expect(ODGMessage.isMessageError(error2)).toBeTruthy();
     });

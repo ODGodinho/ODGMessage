@@ -1,6 +1,12 @@
-import { type HttpHeadersInterface } from "./headers";
-import { type Methods, type ProxyConfigInterface } from "./options";
-import { type ResponseType } from "./response";
+import type { Agent as HttpAgent } from "node:http";
+import type { Agent as HttpsAgent } from "node:https";
+import type { LookupFunction } from "node:net";
+
+import type { Methods } from "../MethodsEnum";
+
+import type { HttpHeadersInterface } from "./headers";
+import type { ProxyConfigInterface } from "./options";
+import type { ResponseType } from "./response";
 
 export interface ParametersInterface extends Record<string, unknown> {
 
@@ -25,6 +31,9 @@ export interface RequestInterface<RequestData, ExtraData extends Record<string, 
     socketPath?: string | null;
     proxy?: ProxyConfigInterface | false;
     signal?: AbortSignal;
+    httpAgent?: HttpAgent;
+    httpsAgent?: HttpsAgent;
+    lookup?: LookupFunction;
     extras?: ExtraData;
 }
 

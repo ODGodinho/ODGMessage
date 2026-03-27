@@ -1,6 +1,6 @@
 import { UnknownException } from "@odg/exception";
 
-import { type RequestInterface, type ResponseInterface } from "../interfaces";
+import type { RequestInterface, ResponseInterface } from "../interfaces";
 
 import { MessageResponse } from "./MessageResponse";
 

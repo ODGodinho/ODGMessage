@@ -8,9 +8,14 @@
         ],
         "typeRoots": [
             "./src/@types",
-            "node_modules/@types"
+            "node_modules/@types",
+            "./node_modules"
         ],
-        "types": [ "node" ]
+        "types": [
+            "node",
+            "vite/client",
+            "vitest/globals"
+        ]
     },
     "exclude": [
         "node_modules/",

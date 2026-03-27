@@ -1,4 +1,4 @@
-import { type RequestInterface, type ResponseInterface } from "../interfaces";
+import type { RequestInterface, ResponseInterface } from "../interfaces";
 
 /**
  * @template {unknown} ResponseData
@@ -28,7 +28,7 @@ export class MessageResponse<RequestData = unknown, ResponseData = unknown> {
     }
 
     /**
-     * Get response status
+     * Return response status
      *
      * @returns {number}
      */
@@ -37,7 +37,7 @@ export class MessageResponse<RequestData = unknown, ResponseData = unknown> {
     }
 
     /**
-     * Get response body
+     * Return response body
      *
      * @returns {ResponseData}
      */
