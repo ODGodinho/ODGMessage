@@ -1,4 +1,5 @@
 name: Ci Job
+
 on:
   push:
     branches: [ main, master ]
@@ -16,6 +17,8 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Yarn Corepack
+        run: corepack enable
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.version }}
@@ -44,11 +47,8 @@ jobs:
           fail_ci_if_error: true
           verbose: true
       - if: ${{ github.event_name == 'push' && vars.IS_PACKAGE == 'true' }}
-        name: Install semantic release
-        run: yarn global add semantic-release
-      - if: ${{ github.event_name == 'push' && vars.IS_PACKAGE == 'true' }}
         name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: semantic-release
+        run: yarn dlx semantic-release
