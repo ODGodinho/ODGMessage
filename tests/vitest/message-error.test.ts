@@ -12,7 +12,7 @@ describe.each([
         expect(exception.request).toBeUndefined();
         expect(exception.response).toBeUndefined();
         expect(exception.code).toBeUndefined();
-        expect(exception.getMessage()).toBeUndefined();
+        expect(exception.getMessageResponse()).toBeUndefined();
     });
 
     test("Test Fake Request", () => {
@@ -36,7 +36,7 @@ describe.each([
         expect(exception.request?.url).toStrictEqual("http://localhost");
         expect(exception.response?.status).toStrictEqual(200);
         expect(exception.response?.data).toStrictEqual("response data");
-        expect(exception.getMessage()).toBeDefined();
+        expect(exception.getMessageResponse()).toBeDefined();
     });
 
     test("Is Message Error test", () => {
