@@ -16,7 +16,7 @@ export class MessageException<RequestData, ResponseData = unknown> extends Excep
         super(message, preview, code);
     }
 
-    public getMessage(): MessageResponse<RequestData, ResponseData> | undefined {
+    public getMessageResponse(): MessageResponse<RequestData, ResponseData> | undefined {
         if (!this.request || !this.response) return;
 
         return new MessageResponse(

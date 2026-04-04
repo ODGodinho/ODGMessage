@@ -36,7 +36,7 @@ describe("CacheableLookup", () => {
                 address: "127.0.0.1",
                 family: 4,
             }),
-            maxTTl: 3000,
+            maxTTL: 3000,
         });
 
         const resolved = await lookup.lookupAsync("example.com", { family: 4 });
@@ -61,7 +61,7 @@ describe("CacheableLookup", () => {
         }));
         const lookup = new CacheableLookup(cache, {
             lookup: resolver,
-            maxTTl: 3000,
+            maxTTL: 3000,
         });
 
         await lookup.lookupAsync("cache.test", { family: 4 });
@@ -163,7 +163,7 @@ describe("CacheableLookup", () => {
         };
 
         const lookup = new CacheableLookup(cache, {
-            maxTTl: 3000,
+            maxTTL: 3000,
         });
 
         const resolved = await lookup.lookupAsync("cached-host", { family: 4 });
@@ -185,7 +185,7 @@ describe("CacheableLookup", () => {
         }));
         const lookup = new CacheableLookup(cache, {
             lookup: resolver,
-            maxTTl: 2000,
+            maxTTL: 2000,
         });
 
         const resolved = await lookup.lookupAsync("get-fail.test", { family: 4 });
@@ -206,7 +206,7 @@ describe("CacheableLookup", () => {
         }));
         const lookup = new CacheableLookup(cache, {
             lookup: resolver,
-            maxTTl: 2000,
+            maxTTL: 2000,
         });
 
         const resolved = await lookup.lookupAsync("set-fail.test", { family: 4 });

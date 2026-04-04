@@ -33,7 +33,7 @@ describe("Teste MessageResponse class", () => {
             method: Methods.GET,
         }, { data: {}, headers: {}, status: 500 });
 
-        expect(message.getMessage()).toBe(message);
+        expect(message.getMessageResponse()).toBe(message);
     });
     test("Teste getBody", () => {
         const message = new MessageResponse({

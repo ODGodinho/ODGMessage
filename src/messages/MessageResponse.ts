@@ -14,12 +14,12 @@ export class MessageResponse<RequestData = unknown, ResponseData = unknown> {
     ) {
     }
 
-    public getMessage(): this {
+    public getMessageResponse(): this {
         return this;
     }
 
     /**
-     * Truthy if valid status in message.request.validadeStatus(message.getStatus())
+     * Truthy if valid status in message.request.validateStatus(message.getStatus())
      *
      * @returns {boolean}
      */

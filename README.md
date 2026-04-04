@@ -75,12 +75,14 @@ yarn add @odg/message
 > for use axios implementation [click here](https://github.com/ODGodinho/ODGAxios)
 
 ```typescript
+import { type MessageInterface, type MessageResponse } from "@odg/message";
+
 class Test {
 
     public constructor(private readonly requester: MessageInterface) {
     }
 
-    public async example(): ResponseInterface<any, any> {
+    public async example(): Promise<MessageResponse<any, any>> {
         return this.requester.request({
             url: "https://google.com",
         });
@@ -95,45 +97,60 @@ class Test {
 import axios, {
     type AxiosInstance,
     type AxiosResponse,
-    type AxiosResponseHeaders,
 } from "axios";
 
 import {
     type HttpHeadersInterface,
-    type InterceptorManager,
-    type RequestInterface ,
+    type InterceptorsInterface,
     type MessageInterface,
+    type RequestInterface,
     type ResponseInterface,
     MessageException,
+    MessageResponse,
 } from "@odg/message";
 
 export class AxiosMessage<RequestData, ResponseData> implements MessageInterface<RequestData, ResponseData> {
 
     public interceptors: {
         request: InterceptorManager<RequestInterface<RequestData>>;
-        response: InterceptorManager<ResponseInterface<RequestData, ResponseData>>;
-    };
+        response: InterceptorManager<MessageResponse<RequestData, ResponseData>>;
+    }
 
     private readonly client: AxiosInstance;
 
-    public constructor() {
-        this.client = axios.create();
-        // this.interceptors = implements;
+    private defaultOptions: Partial<RequestInterface<RequestData>> = {};
+
+    public constructor(client?: AxiosInstance) {
+        this.client = client ?? axios.create();
+    }
+
+    public getDefaultOptions(): Partial<RequestInterface<RequestData>> {
+        return { ...this.defaultOptions };
+    }
+
+    public setDefaultOptions(config: Partial<RequestInterface<RequestData>>): this {
+        this.defaultOptions = { ...this.defaultOptions, ...config };
+
+        return this;
     }
 
     public async request<
         RequestD = RequestData,
         ResponseD = ResponseData,
-    >(config: RequestInterface<RequestD>): Promise<ResponseInterface<RequestD, ResponseD>> {
+    >(config: RequestInterface<RequestD>): Promise<MessageResponse<RequestD, ResponseD>> {
         try {
             const response = await this.client.request<ResponseD, AxiosResponse<ResponseD, RequestD>, RequestD>(config);
 
-            return {
+            const body: ResponseInterface<ResponseD> = {
                 data: response.data,
                 status: response.status,
-                headers: response.headers,
-                request: response.config,
+                headers: response.headers as HttpHeadersInterface,
             };
+
+            return new MessageResponse(
+                response.config as RequestInterface<RequestD>,
+                body,
+            );
         } catch (error: unknown) {
             throw new MessageException("Example");
         }

@@ -19,7 +19,7 @@ export class CacheableLookup {
 
     private readonly resolver: (hostname: string, options: LookupOptions) => Promise<LookupPromiseResult>;
 
-    private readonly maxTTl: number;
+    private readonly maxTTL: number;
 
     private setCache: boolean;
 
@@ -33,7 +33,7 @@ export class CacheableLookup {
 
         this.useCache = config?.useCache ?? true;
         this.setCache = config?.setCache ?? true;
-        this.maxTTl = config?.maxTTl ?? Infinity;
+        this.maxTTL = config?.maxTTL ?? Infinity;
     }
 
     public setUseCache(useCache: boolean): this {
@@ -77,7 +77,7 @@ export class CacheableLookup {
         const resolved = await this.resolver(hostname, options);
 
         if (this.setCache) {
-            void this.cache.set(cacheKey, resolved, this.maxTTl).catch(() => false);
+            void this.cache.set(cacheKey, resolved, this.maxTTL).catch(() => false);
         }
 
         return resolved;
